@@ -11,11 +11,10 @@
 
 ### Front-end
 - **Languages:** HTML5 / CSS3 / JavaScript (ES6+)
-- **Frameworks / Libraries:** React / Next.js / Tailwind CSS *(※不要なものは削除・追加してください)*
 
 ### Tooling & Infrastructure
 - **Version Control:** Git / GitHub
-- **Deployment:** GitHub Pages / Vercel / Netlify
+- **Deployment:** GitHub Pages
 
 ---
 
