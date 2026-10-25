@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riko's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 画面上部に固定するナビゲーションヘッダー -->
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#timeline" class="nav-link">Timeline</a></li>
+                <li><a href="#works" class="nav-link">Works</a></li>
+                <!-- テーマ切り替えボタン -->
+                <li><button id="theme-toggle" class="theme-toggle-btn" aria-label="テーマ切り替え"></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 1. ヒーローセクション -->
+    <section class="hero">
+        <h1 class="fade-in-item">
+            <span id="typing-text"></span><span class="typing-cursor">|</span>
+        </h1>
+        <p class="fade-in-item">Scroll Down ↓</p>
+    </section>
+
+    <!-- 2. 自己紹介セクション -->
+    <section class="section nav-section" id="about">
+        <h2 class="section-title fade-in-item">自己紹介</h2>
+        
+        <div class="name fade-in-item">
+            <div class="name-text">
+                <p>公大高専 ２年知能情報コース</p>
+                <h2>松原 里向</h2>
+            </div>
+            <div class="profile-icon">
+                <img src="Myphoto.jpeg" alt="松原里向の顔写真">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2.5 スキルセクション -->
+    <section class="section nav-section" id="skills">
+        
+        <!-- 使用言語グループ -->
+        <div class="skill-group">
+            <h2 class="section-title language fade-in-item">使用言語</h2>
+            <div class="works-grid">
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="python.webp" alt="Python">
+                    </div>
+                    <div class="work-info">
+                        <h3>Python</h3>
+                        <p>人生で最初に使用した言語</p>
+                    </div>
+                </div>
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="arduino.png" alt="Arduino">
+                    </div>
+                    <div class="work-info">
+                        <h3>Arduino</h3>
+                        <p>マイクロコンピュータの操作で使用</p>
+                    </div>
+                </div>
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="git.png" alt="Git">
+                    </div>
+                    <div class="work-info">
+                        <h3>Git</h3>
+                        <p>制作物の共同開発に使用</p>
+                    </div>
+                </div>
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="html.webp" alt="HTML">
+                    </div>
+                    <div class="work-info">
+                        <h3>HTML</h3>
+                        <p>このポートフォリオの構造作成</p>
+                    </div>
+                </div>
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="css.png" alt="CSS">
+                    </div>
+                    <div class="work-info">
+                        <h3>CSS</h3>
+                        <p>このポートフォリオのスタイリング</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 使用サービスグループ -->
+        <div class="skill-group" style="margin-top: 100px;">
+            <h2 class="section-title Soft fade-in-item">使用サービス</h2>
+            <div class="works-grid">
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="github.png" alt="GitHub">
+                    </div>
+                    <div class="work-info">
+                        <h3>GitHub</h3>
+                        <p>作品の公開と管理に使用</p>
+                    </div>
+                </div>
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="vscode_.png" alt="VSCode">
+                    </div>
+                    <div class="work-info">
+                        <h3>VSCode</h3>
+                        <p>メインのエディタとして使用</p>
+                    </div>
+                </div>
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="tinkercad.png" alt="TinkerCad">
+                    </div>
+                    <div class="work-info">
+                        <h3>TinkerCad</h3>
+                        <p>マイクロコンピュータの回路設計で使用</p>
+                    </div>
+                </div>
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="Windows_Subsystem_for_Linux_logo.png" alt="WSL">
+                    </div>
+                    <div class="work-info">
+                        <h3>WSL</h3>
+                        <p>Linux環境での開発演習で使用</p>
+                    </div>
+                </div>
+                <div class="work-card fade-in-item">
+                    <div class="work-image">
+                        <img src="realvnc.png" alt="RealVNC">
+                    </div>
+                    <div class="work-info">
+                        <h3>RealVNC</h3>
+                        <p>Raspberry Piの遠隔操作で使用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 3. 経歴セクション（タイムライン） -->
+    <section class="section nav-section" id="timeline">
+        <h2 class="section-title fade-in-item">経歴</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2025年 4月</h3>
+                    <p>大阪公立大学工業高等専門学校 入学</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2025年 11月</h3>
+                    <p>近畿高専英語プレゼンテーションコンテスト 特別審査員賞</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2026年 4月</h3>
+                    <p>2年進級＆知能情報コース配属</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2026年 7月</h3>
+                    <p>Pythonを用いた初の作品完成</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2026年 10月</h3>
+                    <p>Pythonを用いた農業推進アプリの開発</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2026年 10月</h3>
+                    <p>JavaScript, HTML, CSSを用いた初のポートフォリオ制作</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>現在</h3>
+                    <p>編入に向け勉強中 ＆ 新規アプリ開発中</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2026年 11月</h3>
+                    <p>近畿高専英語プレゼンテーションコンテスト出場予定</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 作成物セクション -->
+    <section class="section nav-section" id="works">
+        <h2 class="section-title fade-in-item">作成物</h2>
+        <div class="works-grid">
+            <div class="work-card modal-trigger fade-in-item" 
+                data-title="的あてゲーム" 
+                data-desc="PythonのPygameライブラリを使用して作成した、2Dの的あてゲームです。重力加速度を用いた斜方投射や当たり判定を実装しました。" 
+                data-tech="Python"
+                data-img="mato.png"
+                data-site-url="https://colab.research.google.com/drive/17i-BSYAV5JbBrCCcUa2tiu9rCJS76pV0?usp=sharing"
+                data-github-url="">
+                <div class="work-image">
+                    <img src="mato.png" alt="的あてゲーム">
+                </div>
+                <div class="work-info">
+                    <h3>的あてゲーム</h3>
+                    <p>Pythonを用いた2Dシューティング・的あてゲーム</p>
+                </div>
+            </div>
+
+            <div class="work-card modal-trigger fade-in-item" 
+                data-title="スマートアグリ" 
+                data-desc="スマート農業を推進するために開発したアプリケーションです。手軽に農業に携われることができます。" 
+                data-tech="Python(streamlit) / HTML / CSS"
+                data-img="agu.png"
+                data-site-url="https://aguapp-viagvo8r77dmmbjxlwx8dc.streamlit.app/"
+                data-github-url="https://github.com/NERO11110/agu.app.git">
+                <div class="work-image">
+                    <img src="agu.png" alt="スマートアグリ">
+                </div>
+                <div class="work-info">
+                    <h3>スマートアグリ</h3>
+                    <p>スマート農業推進のために制作したWebアプリ</p>
+                </div>
+            </div>
+
+            <div class="work-card modal-trigger fade-in-item" 
+                data-title="ポートフォリオサイト" 
+                data-desc="自分自身の経歴やスキル、制作物をまとめたWebサイトです。レスポンシブデザインとアニメーションを取り入れました。" 
+                data-tech="HTML / CSS / JavaScript"
+                data-img="Por.png"
+                data-site-url="#"
+                data-github-url="">
+                <div class="work-image">
+                    <img src="Por.png" alt="ポートフォリオサイト">
+                </div>
+                <div class="work-info">
+                    <h3>ポートフォリオサイト</h3>
+                    <p>HTML/CSS/JSで制作した本サイト</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- モーダルウィンドウ構造 -->
+    <div class="modal" id="modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image-container" id="modal-image-container"></div>
+                <h3 id="modal-title">作品タイトル</h3>
+                <p class="modal-tech" id="modal-tech">使用技術</p>
+                <p class="modal-desc" id="modal-desc">説明文がここに入ります。</p>
+                
+                <div class="modal-buttons">
+                    <a id="modal-site-url" class="modal-btn site-btn" href="#" target="_blank" rel="noopener noreferrer">
+                        Webサイトを開く ↗
+                    </a>
+                    <a id="modal-github-url" class="modal-btn github-btn" href="#" target="_blank" rel="noopener noreferrer">
+                        GitHubコードを見る ↗
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- トップへ戻るボタン -->
+    <button id="back-to-top" class="back-to-top" aria-label="ページ最上部へ戻る">↑</button>
+
+    <!-- JavaScriptファイルの読み込み -->
+    <script src="script.js"></script>
+</body>
+</html>
