@@ -1,49 +1,44 @@
-# Portfolio Website
+# Riko's Portfolio 🚀
 
-個人ポートフォリオWebサイトのソースコードを管理するリポジトリです。  
-これまでに制作したプロダクト、保有スキル、経歴、お問い合わせ窓口などを掲載しています。
+大阪公立大学工業高等専門学校（公大高専）知能情報コースに所属する **松原 里向（Riko Matsubara）** のポートフォリオサイトです。  
+これまでに開発した作品、習得したスキル、経歴をまとめています。
 
-🌐 **Live Demo:** [https://NERO11110.github.io/Portfolio/](https://NERO11110.github.io/Portfolio/) 
-
----
-
-## 🛠 使用技術 (Tech Stack)
-
-### Front-end
-- **Languages:** HTML5 / CSS3 / JavaScript (ES6+)
-
-### Tooling & Infrastructure
-- **Version Control:** Git / GitHub
-- **Deployment:** GitHub Pages
+🔗 **[ポートフォリオサイトを見る](https://nero11110.github.io/Portfolio/)**
 
 ---
 
-## ✨ 特徴・こだわりポイント (Features)
+## 📌 主な機能・こだわり
 
-1. **完全レスポンシブデザイン**
-   - PC、タブレット、スマートフォンなど、端末の画面サイズに合わせたレイアウト調整を行っています。
-2. **パフォーマンス & UI/UX**
-   - 直感的でシンプルな操作性と、快適なページ読み込み速度を意識して設計しました。
-3. **制作物ギャラリー (Projects)**
-   - これまで開発したWebアプリケーションやWebサイトの概要、使用技術、ソースコードへのリンクをまとめています。
-4. **お問い合わせフォーム (Contact)**
-   - 外部サービス等と連携し、訪問者が簡単にメッセージを送信できる仕様にしています。
+- **モダンなUI/UXデザイン**
+  - ダークモードを標準とし、漆黒（`#0d0d0e`）をベースとした洗練されたカラーリング
+  - Glassmorphism（すりガラス効果）を採用した固定ナビゲーションヘッダー
+  - テーマ切り替えボタンによる **ダークモード / ライトモード** のシームレスな切替（`localStorage` に設定保存）
+- **インタラクティブなアニメーション**
+  - ヒーローセクションでのタイピング風テキストアニメーション
+  - `IntersectionObserver` を用いたスクロール時のフェードイン（`fade-in-item`）
+  - スクロール位置に応じたヘッダーナビゲーションの自動ハイライト機能
+- **詳細モーダルウィンドウ**
+  - 作成物カードをクリックすると詳細情報、使用技術、デモサイト・GitHubコードへのリンクをモーダル表示
+- **レスポンシブ対応**
+  - `clamp()` 関数や Flexbox / CSS Grid を活用し、PC・スマートフォン・タブレットの全デバイスで快適に閲覧可能
 
 ---
 
-## 🚀 ローカル開発環境のセットアップ (Getting Started)
+## 🛠 使用技術（Tech Stack）
 
-以下の手順でローカル環境にクローンし、起動することができます。
+| カテゴリ | 技術・ツール |
+| --- | --- |
+| **フロントエンド** | HTML5, CSS3, JavaScript (ES6+) |
+| **開発環境・サービス** | VSCode, Git, GitHub, WSL (Windows Subsystem for Linux) |
+| **その他所有スキル** | Python, Arduino, TinkerCad, RealVNC |
 
-```bash
-# 1. リポジトリのクローン
-git clone [https://github.com/NERO11110/Portfolio.git](https://github.com/NERO11110/Portfolio.git)
+---
 
-# 2. プロジェクトディレクトリへ移動
-cd Portfolio
+## 📂 プロジェクト構成
 
-# 3. 依存パッケージのインストール (npm / yarn 等を使用している場合)
-npm install
-
-# 4. 開発サーバーの起動
-npm run dev
+```text
+.
+├── index.html       # メインのHTML構造（Hero, About, Skills, Timeline, Works, Modal）
+├── style.css        # スタイル定義（CSS変数、レスポンシブ、テーマ切替）
+├── script.js        # 動的処理（タイピングアニメーション、モーダル、テーマ切替、Observer）
+└── README.md        # プロジェクト概要
