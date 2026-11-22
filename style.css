@@ -612,3 +612,46 @@ body {
   border-color: var(--text-color);
   background-color: var(--card-hover-bg);
 }
+
+/* スキル習得率（プログレスバー）のスタイル */
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.skill-header h3 {
+  margin-bottom: 0; /* 既存の margin-bottom: 8px をリセット */
+}
+
+.skill-percent {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-color);
+  font-variant-numeric: tabular-nums; /* 数字の幅を揃える */
+}
+
+.skill-bar-bg {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  width: 0%; /* 初期状態は0% */
+  background: linear-gradient(90deg, var(--accent-color), #60a5fa);
+  border-radius: 999px;
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s; /* 0.2秒遅れて伸びる */
+}
+
+/* スクロールしてカードが表示されたらバーを指定の％まで伸ばす */
+.work-card.show .skill-bar-fill {
+  width: var(--skill-level);
+}
