@@ -1,6 +1,7 @@
 /* CSS変数の定義（標準：ダークモード） */
 :root {
-  --bg-color: #0d0d0e; /* より洗練された漆黒 */
+  --bg-color: #0d0d0e;
+  /* より洗練された漆黒 */
   --card-bg: #161618;
   --card-hover-bg: #1c1c1f;
   --text-color: #f3f4f6;
@@ -123,7 +124,8 @@ body {
 
 /* 共通セクション設定（ダイナミック×空白の美） */
 .section {
-  max-width: 1000px; /* 横幅をやや拡大して広がり感をプラス */
+  max-width: 1000px;
+  /* 横幅をやや拡大して広がり感をプラス */
   margin: 0 auto;
   padding: 160px 32px 140px 32px;
   border-bottom: 1px solid var(--border-color);
@@ -181,9 +183,22 @@ body {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-10px); }
-  60% { transform: translateY(-5px); }
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 .typing-cursor {
@@ -193,8 +208,15 @@ body {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 /* 2. 自己紹介セクション（インパクト重視に刷新） */
@@ -550,6 +572,7 @@ body {
     padding: 12px 16px;
   }
 }
+
 .modal-url-btn {
   display: inline-block;
   margin-top: 20px;
@@ -622,14 +645,16 @@ body {
 }
 
 .skill-header h3 {
-  margin-bottom: 0; /* 既存の margin-bottom: 8px をリセット */
+  margin-bottom: 0;
+  /* 既存の margin-bottom: 8px をリセット */
 }
 
 .skill-percent {
   font-size: 14px;
   font-weight: 700;
   color: var(--accent-color);
-  font-variant-numeric: tabular-nums; /* 数字の幅を揃える */
+  font-variant-numeric: tabular-nums;
+  /* 数字の幅を揃える */
 }
 
 .skill-bar-bg {
@@ -644,11 +669,13 @@ body {
 
 .skill-bar-fill {
   height: 100%;
-  width: 0%; /* 初期状態は0% */
+  width: 0%;
+  /* 初期状態は0% */
   background: linear-gradient(90deg, var(--accent-color), #60a5fa);
   border-radius: 999px;
   box-shadow: 0 0 10px var(--accent-glow);
-  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s; /* 0.2秒遅れて伸びる */
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  /* 0.2秒遅れて伸びる */
 }
 
 /* スクロールしてカードが表示されたらバーを指定の％まで伸ばす */
@@ -674,13 +701,16 @@ body {
   scroll-behavior: smooth;
   /* 左右の端のカードも画面中央に来られるように余白を確保 */
   padding: 24px calc(50% - 170px);
-  scrollbar-width: none; /* Firefox用スクロールバー非表示 */
-  -ms-overflow-style: none; /* IE/Edge用 */
+  scrollbar-width: none;
+  /* Firefox用スクロールバー非表示 */
+  -ms-overflow-style: none;
+  /* IE/Edge用 */
   cursor: grab;
 }
 
 .works-reel::-webkit-scrollbar {
-  display: none; /* Chrome/Safari用スクロールバー非表示 */
+  display: none;
+  /* Chrome/Safari用スクロールバー非表示 */
 }
 
 .works-reel.dragging {
@@ -696,9 +726,9 @@ body {
   transform: scale(0.92);
   opacity: 0.55;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.4s ease,
-              box-shadow 0.4s ease,
-              border-color 0.3s ease;
+    opacity 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
 }
 
 /* 中央にフォーカスされたカード（アクティブ状態） */
