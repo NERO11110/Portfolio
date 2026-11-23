@@ -655,3 +655,147 @@ body {
 .work-card.show .skill-bar-fill {
   width: var(--skill-level);
 }
+
+/* =========================================================
+   作成物セクション：横回転リール（カルーセル）スタイル
+   ========================================================= */
+.reel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.works-reel {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* 左右の端のカードも画面中央に来られるように余白を確保 */
+  padding: 24px calc(50% - 170px);
+  scrollbar-width: none; /* Firefox用スクロールバー非表示 */
+  -ms-overflow-style: none; /* IE/Edge用 */
+  cursor: grab;
+}
+
+.works-reel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari用スクロールバー非表示 */
+}
+
+.works-reel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  cursor: grabbing;
+}
+
+/* リール内のカードサイズと立体演出 */
+.works-reel .work-card {
+  flex: 0 0 340px;
+  scroll-snap-align: center;
+  transform: scale(0.92);
+  opacity: 0.55;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s ease,
+              box-shadow 0.4s ease,
+              border-color 0.3s ease;
+}
+
+/* 中央にフォーカスされたカード（アクティブ状態） */
+.works-reel .work-card.is-center {
+  transform: scale(1);
+  opacity: 1;
+  border-color: var(--accent-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.works-reel .work-card.is-center:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* 左右の送りボタン */
+.reel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+}
+
+.reel-btn:hover {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.reel-btn.prev {
+  left: -12px;
+}
+
+.reel-btn.next {
+  right: -12px;
+}
+
+/* インジケーター（ドット） */
+.reel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.reel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  border: none;
+  cursor: pointer;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.reel-dot.active {
+  width: 24px;
+  border-radius: 999px;
+  background-color: var(--accent-color);
+}
+
+/* スマホ幅でのカードサイズ調整 */
+@media (max-width: 768px) {
+  .works-reel {
+    padding: 20px calc(50% - 140px);
+    gap: 20px;
+  }
+
+  .works-reel .work-card {
+    flex: 0 0 280px;
+  }
+
+  .reel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .reel-btn.prev {
+    left: 4px;
+  }
+
+  .reel-btn.next {
+    right: 4px;
+  }
+}
