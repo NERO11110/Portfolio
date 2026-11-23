@@ -992,6 +992,11 @@ body {
   color: #ffffff;
 }
 
+.section-persent {
+  color: #2563eb;
+  text-transform: uppercase
+}
+
 @media (max-width: 768px) {
   .contact-card {
     padding: 24px 20px;
