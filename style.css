@@ -220,17 +220,86 @@ body {
 }
 
 /* 2. 自己紹介セクション（インパクト重視に刷新） */
+/* フリップカードの土台（既存の margin-bottom: 100px を引き継ぐ） */
+.name-flip-wrapper {
+  perspective: 1400px;
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+
+/* 回転する内側コンテナ */
+.name-flip-inner {
+  position: relative;
+  width: 100%;
+  transition: transform 0.75s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+/* クリックで180度回転 */
+.name-flip-wrapper.is-flipped .name-flip-inner {
+  transform: rotateY(180deg);
+}
+
+/* 表裏共通のカードスタイル（元の .name の見た目を維持） */
 .name {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 60px;
-  margin-bottom: 100px;
   padding: 40px;
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 24px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.name-flip-wrapper:hover .name {
+  border-color: var(--accent-color);
+}
+
+/* 表面は高さの基準になるため relative */
+.name-front {
+  position: relative;
+}
+
+/* 裏面は表面にぴったり重なり、最初から180度回転させておく */
+.name-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+.back-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.back-desc {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--text-color);
+  margin-top: 8px;
+}
+
+/* 控えめな操作ヒント（引き算の美を邪魔しないサイズ） */
+.flip-hint {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--sub-text-color);
+  opacity: 0.65;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.name-flip-wrapper:hover .flip-hint {
+  opacity: 1;
+  color: var(--accent-color);
 }
 
 .name-text {

@@ -448,5 +448,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     } 
-
+// --- 自己紹介カードの表裏フリップ ---
+    const aboutFlipCard = document.getElementById('about-flip-card');
+    if (aboutFlipCard) {
+        aboutFlipCard.addEventListener('click', () => {
+            aboutFlipCard.classList.toggle('is-flipped');
+        });
+    }
 });

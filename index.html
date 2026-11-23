@@ -37,18 +37,33 @@
     <section class="section nav-section" id="about">
         <h2 class="section-title fade-in-item">自己紹介</h2>
 
-        <div class="name fade-in-item">
-            <div class="name-text">
-                <h3>大阪公立大学高専 ２年知能情報コース</h3>
-                <h2>松原 里向
-                (Matsubara Rikou)</h2>
-            </div>
-            <div class="profile-icon">
-                <img src="Myphoto.jpeg" alt="松原里向の顔写真">
+        <div class="name-flip-wrapper fade-in-item" id="about-flip-card">
+            <div class="name-flip-inner">
+                <!-- 表面：これまでのレイアウトそのまま -->
+                <div class="name name-front">
+                    <div class="name-text">
+                        <h3>大阪公立大学高専 ２年知能情報コース</h3>
+                        <h2>松原 里向<br>(Matsubara Rikou)</h2>
+                        <span class="flip-hint">クリックで裏返す ↻</span>
+                    </div>
+                    <div class="profile-icon">
+                        <img src="Myphoto.jpeg" alt="松原里向の顔写真">
+                    </div>
+                </div>
+
+                <!-- 裏面：趣味・パーソナル情報 -->
+                <div class="name name-back">
+                    <div class="back-content">
+                        <h3>Personal / 趣味・好きなこと</h3>
+                        <p class="back-desc">
+                            休日はゲームや音楽鑑賞をしてリフレッシュしています。日常の小さな不便をプログラミングで解決することや、シンプルなデザインを考えるのが好きです。
+                        </p>
+                        <span class="flip-hint">クリックで表に戻る ↺</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
     <!-- 2.5 スキルセクション -->
     <section class="section nav-section" id="skills">
 
