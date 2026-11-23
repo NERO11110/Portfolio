@@ -994,7 +994,7 @@ body {
 
 .section-persent {
   color: #2563eb;
-  text-transform: uppercase
+  font-family: sans-serif
 }
 
 @media (max-width: 768px) {
