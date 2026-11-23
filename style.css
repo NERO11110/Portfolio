@@ -1099,11 +1099,10 @@ body {
   }
 }
 
-/* 普段は高さ0・透明にして隠しておく */
-/* スキル指標のホバー表示（優先順位を .work-info p より強くした版） */
+
 .work-card.skill-card {
   cursor: pointer;
-  height: auto; /* 高さが固定されていた場合の解除 */
+  height: auto; 
 }
 
 .work-info p.skill-detail {
@@ -1133,13 +1132,4 @@ body {
   margin-top: 14px;
   padding-top: 12px;
   border-top-color: var(--border-color);
-}
-
-/* カードにマウスが乗ったとき（ホバー時）にふわっと表示 */
-.skill-card:hover .skill-detail,
-.skill-card.is-active .skill-detail {
-  max-height: 60px;
-  /* 1〜2行が収まる十分な高さ */
-  opacity: 0.85;
-  margin-top: 12px;
 }
