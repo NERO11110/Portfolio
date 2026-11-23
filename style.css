@@ -1098,3 +1098,25 @@ body {
     padding: 24px 20px;
   }
 }
+
+/* 普段は高さ0・透明にして隠しておく */
+.skill-detail {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--sub-text-color);
+  letter-spacing: 0.03em;
+  transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+}
+
+/* カードにマウスが乗ったとき（ホバー時）にふわっと表示 */
+.skill-card:hover .skill-detail,
+.skill-card.is-active .skill-detail {
+  max-height: 60px;
+  /* 1〜2行が収まる十分な高さ */
+  opacity: 0.85;
+  margin-top: 12px;
+}

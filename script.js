@@ -447,12 +447,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('コピーに失敗しました:', err);
             }
         });
-    } 
-// --- 自己紹介カードの表裏フリップ ---
+    }
+    // --- 自己紹介カードの表裏フリップ ---
     const aboutFlipCard = document.getElementById('about-flip-card');
     if (aboutFlipCard) {
         aboutFlipCard.addEventListener('click', () => {
             aboutFlipCard.classList.toggle('is-flipped');
         });
     }
+
+    // --- スキルカードの指標表示（スマホタップ対応） ---
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach((card) => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('is-active');
+        });
+    });
 });
