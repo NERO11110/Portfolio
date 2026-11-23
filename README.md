@@ -3,7 +3,7 @@
 大阪公立大学工業高等専門学校 2年 知能情報コース、松原 里向のポートフォリオサイトです。  
 自身の経歴やスキル、これまでの制作物をまとめています。
 
-🔗 **公開URL**: [https://nero11110.github.io/...](https://github.com/NERO11110) *(※GitHub PagesなどのURLに書き換えてください)*
+🔗 **公開URL**:(https://github.com/NERO11110) 
 
 ---
 
