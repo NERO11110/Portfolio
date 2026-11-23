@@ -286,6 +286,33 @@ body {
   margin-top: 8px;
 }
 
+.back-list {
+  list-style: none;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.back-list li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-color);
+  padding-left: 16px;
+  position: relative;
+}
+
+.back-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+}
+
 /* 控えめな操作ヒント（引き算の美を邪魔しないサイズ） */
 .flip-hint {
   display: inline-block;
