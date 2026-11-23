@@ -1088,11 +1088,6 @@ body {
   color: #ffffff;
 }
 
-.section-persent {
-  color: #2563eb;
-  font-family: -apple-system
-}
-
 @media (max-width: 768px) {
   .contact-card {
     padding: 24px 20px;
