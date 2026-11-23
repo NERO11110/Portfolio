@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 detailTitle.textContent = card.getAttribute('data-title') || '';
                 detailTech.textContent = card.getAttribute('data-tech') || '';
-                detailDesc.textContent = card.getAttribute('data-desc') || '';
+                detailDesc.textContent = card.getAttribute('data-detail-desc') || card.getAttribute('data-desc') || '';
 
                 const siteUrl = card.getAttribute('data-site-url') || '';
                 const githubUrl = card.getAttribute('data-github-url') || '';
