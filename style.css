@@ -1100,16 +1100,39 @@ body {
 }
 
 /* 普段は高さ0・透明にして隠しておく */
-.skill-detail {
+/* スキル指標のホバー表示（優先順位を .work-info p より強くした版） */
+.work-card.skill-card {
+  cursor: pointer;
+  height: auto; /* 高さが固定されていた場合の解除 */
+}
+
+.work-info p.skill-detail {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
   margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  border-top: 1px solid transparent;
   font-size: 12px;
   line-height: 1.6;
-  color: var(--sub-text-color);
+  color: var(--accent-color);
   letter-spacing: 0.03em;
-  transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.3s ease,
+    margin-top 0.35s ease,
+    padding-top 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.work-card.skill-card:hover .work-info p.skill-detail,
+.work-card.skill-card.is-active .work-info p.skill-detail {
+  max-height: 80px;
+  opacity: 1;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top-color: var(--border-color);
 }
 
 /* カードにマウスが乗ったとき（ホバー時）にふわっと表示 */
