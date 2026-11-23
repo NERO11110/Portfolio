@@ -427,9 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollToAllIndex(total, false);
             handleReelUpdate();
         });
-    }/* 
-
-
+    }
     // --- 8. 連絡先：メールアドレスのワンクリックコピー ---
     const copyEmailBtn = document.getElementById('copy-email-btn');
     const contactEmail = document.getElementById('contact-email');
@@ -450,4 +448,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     } 
+
 });
