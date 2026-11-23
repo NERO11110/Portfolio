@@ -185,45 +185,159 @@ document.addEventListener('DOMContentLoaded', () => {
         // タメを作って開始
         setTimeout(typeWriter, 400);
     }
-    // --- 7. 作成物セクション：横回転リール制御 ---
+    // --- 7. 作成物セクション：円柱無限リール＆詳細説明連動 ---
     const reel = document.getElementById('works-reel');
     const prevBtn = document.getElementById('reel-prev');
     const nextBtn = document.getElementById('reel-next');
     const dotsContainer = document.getElementById('reel-dots');
 
-    if (reel) {
-        const cards = Array.from(reel.querySelectorAll('.work-card'));
-        let activeIndex = 0;
+    // 下部の詳細説明欄の要素
+    const detailBox = document.getElementById('reel-detail');
+    const detailTitle = document.getElementById('reel-detail-title');
+    const detailTech = document.getElementById('reel-detail-tech');
+    const detailDesc = document.getElementById('reel-detail-desc');
+    const detailSite = document.getElementById('reel-detail-site');
+    const detailGithub = document.getElementById('reel-detail-github');
 
-        // インジケーター（ドット）の自動生成
-        cards.forEach((_, i) => {
+    if (reel) {
+        const originalCards = Array.from(reel.querySelectorAll('.work-card'));
+        const total = originalCards.length;
+
+        // 円柱ループ用に前後に全カードのクローン（複製）を追加
+        const prependClones = originalCards.map(card => {
+            const clone = card.cloneNode(true);
+            clone.classList.add('is-clone');
+            return clone;
+        });
+        const appendClones = originalCards.map(card => {
+            const clone = card.cloneNode(true);
+            clone.classList.add('is-clone');
+            return clone;
+        });
+
+        prependClones.forEach(clone => reel.insertBefore(clone, originalCards[0]));
+        appendClones.forEach(clone => reel.appendChild(clone));
+
+        const allCards = Array.from(reel.querySelectorAll('.work-card'));
+
+        // クローンも含めた全カードにモーダルクリックイベントを再付与
+        allCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.getAttribute('data-title') || '';
+                const desc = card.getAttribute('data-desc') || '';
+                const tech = card.getAttribute('data-tech') || '';
+                const imgSrc = card.getAttribute('data-img') || '';
+                const siteUrl = card.getAttribute('data-site-url') || '';
+                const githubUrl = card.getAttribute('data-github-url') || '';
+
+                modalTitle.textContent = title;
+                modalTech.textContent = tech;
+                modalDesc.textContent = desc;
+
+                if (imgSrc) {
+                    modalImageContainer.innerHTML = `<img src="${imgSrc}" alt="${title}">`;
+                    modalImageContainer.style.display = 'flex';
+                } else {
+                    modalImageContainer.innerHTML = '';
+                    modalImageContainer.style.display = 'none';
+                }
+
+                if (siteUrl && siteUrl !== '#') {
+                    modalSiteBtn.href = siteUrl;
+                    modalSiteBtn.style.display = 'inline-flex';
+                } else {
+                    modalSiteBtn.style.display = 'none';
+                }
+
+                if (githubUrl && githubUrl !== '#') {
+                    modalGithubBtn.href = githubUrl;
+                    modalGithubBtn.style.display = 'inline-flex';
+                } else {
+                    modalGithubBtn.style.display = 'none';
+                }
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // インジケーター（ドット）の生成
+        originalCards.forEach((_, i) => {
             const dot = document.createElement('button');
             dot.className = 'reel-dot' + (i === 0 ? ' active' : '');
             dot.setAttribute('aria-label', `作品 ${i + 1} を表示`);
-            dot.addEventListener('click', () => scrollToCard(i));
+            dot.addEventListener('click', () => scrollToAllIndex(total + i, true));
             dotsContainer.appendChild(dot);
         });
         const dots = Array.from(dotsContainer.querySelectorAll('.reel-dot'));
 
-        // 指定した番号のカードを中央へ移動
-        const scrollToCard = (index) => {
-            const targetCard = cards[index];
+        let currentAllIndex = total; // 中央セットの先頭（本物の1枚目）から開始
+        let lastRealIndex = -1;
+        let scrollEndTimer = null;
+
+        // 指定インデックスのカードを中央へ移動
+        const scrollToAllIndex = (allIdx, smooth = true) => {
+            const targetCard = allCards[allIdx];
             if (!targetCard) return;
             const reelCenter = reel.offsetWidth / 2;
             const cardCenter = targetCard.offsetLeft + targetCard.offsetWidth / 2;
-            reel.scrollTo({
-                left: cardCenter - reelCenter,
-                behavior: 'smooth'
-            });
+
+            if (!smooth) {
+                reel.classList.add('no-smooth');
+                reel.scrollLeft = cardCenter - reelCenter;
+                // 強制リフロー後にsmoothを戻す
+                void reel.offsetWidth;
+                reel.classList.remove('no-smooth');
+            } else {
+                reel.scrollTo({
+                    left: cardCenter - reelCenter,
+                    behavior: 'smooth'
+                });
+            }
         };
 
-        // 中央にあるカードを判定してアクティブ化
-        const updateActiveCard = () => {
+        // 下部の詳細説明欄を更新
+        const updateDetailPanel = (realIndex) => {
+            if (realIndex === lastRealIndex) return;
+            lastRealIndex = realIndex;
+
+            const card = originalCards[realIndex];
+            if (!card || !detailBox) return;
+
+            detailBox.classList.add('updating');
+            setTimeout(() => {
+                detailTitle.textContent = card.getAttribute('data-title') || '';
+                detailTech.textContent = card.getAttribute('data-tech') || '';
+                detailDesc.textContent = card.getAttribute('data-desc') || '';
+
+                const siteUrl = card.getAttribute('data-site-url') || '';
+                const githubUrl = card.getAttribute('data-github-url') || '';
+
+                if (siteUrl && siteUrl !== '#') {
+                    detailSite.href = siteUrl;
+                    detailSite.style.display = 'inline-flex';
+                } else {
+                    detailSite.style.display = 'none';
+                }
+
+                if (githubUrl && githubUrl !== '#') {
+                    detailGithub.href = githubUrl;
+                    detailGithub.style.display = 'inline-flex';
+                } else {
+                    detailGithub.style.display = 'none';
+                }
+
+                detailBox.classList.remove('updating');
+            }, 140);
+        };
+
+        // スクロール位置から中央カード判定＆円柱ループのシームレスワープ
+        const handleReelUpdate = () => {
             const reelCenter = reel.scrollLeft + reel.offsetWidth / 2;
             let closestIndex = 0;
             let minDistance = Infinity;
 
-            cards.forEach((card, i) => {
+            allCards.forEach((card, i) => {
                 const cardCenter = card.offsetLeft + card.offsetWidth / 2;
                 const distance = Math.abs(reelCenter - cardCenter);
                 if (distance < minDistance) {
@@ -232,29 +346,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            activeIndex = closestIndex;
-            cards.forEach((card, i) => card.classList.toggle('is-center', i === activeIndex));
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+            currentAllIndex = closestIndex;
+            const realIndex = ((closestIndex % total) + total) % total;
+
+            // 見た目（中央・左傾き・右傾き）とドットの更新
+            allCards.forEach((card, i) => {
+                card.classList.toggle('is-center', i === closestIndex);
+                card.classList.toggle('is-right', i > closestIndex);
+            });
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === realIndex));
+
+            // 下の説明欄を更新
+            updateDetailPanel(realIndex);
+
+            // スクロール停止後にクローン領域にいたら本物の位置へ瞬時ワープ
+            clearTimeout(scrollEndTimer);
+            scrollEndTimer = setTimeout(() => {
+                if (currentAllIndex < total) {
+                    scrollToAllIndex(currentAllIndex + total, false);
+                } else if (currentAllIndex >= total * 2) {
+                    scrollToAllIndex(currentAllIndex - total, false);
+                }
+            }, 120);
         };
 
-        reel.addEventListener('scroll', updateActiveCard, { passive: true });
-        window.addEventListener('resize', updateActiveCard);
+        reel.addEventListener('scroll', handleReelUpdate, { passive: true });
+        window.addEventListener('resize', () => scrollToAllIndex(currentAllIndex, false));
 
-        // 左右ボタン（端まで行ったらループ回転）
+        // 左右ボタン（無限に同じ方向へ回り続ける）
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
-                const nextIdx = (activeIndex - 1 + cards.length) % cards.length;
-                scrollToCard(nextIdx);
+                scrollToAllIndex(currentAllIndex - 1, true);
             });
         }
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
-                const nextIdx = (activeIndex + 1) % cards.length;
-                scrollToCard(nextIdx);
+                scrollToAllIndex(currentAllIndex + 1, true);
             });
         }
 
-        // マウスドラッグでの横スクロール対応
+        // マウスドラッグ操作
         let isDown = false;
         let startX = 0;
         let scrollStart = 0;
@@ -272,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isDown) return;
             isDown = false;
             reel.classList.remove('dragging');
-            scrollToCard(activeIndex); // 離したら一番近いカードを中央にピタッと合わせる
+            scrollToAllIndex(currentAllIndex, true);
         });
 
         reel.addEventListener('mousemove', (e) => {
@@ -284,7 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
             reel.scrollLeft = scrollStart - walk;
         });
 
-        // ドラッグ操作直後の誤クリック（モーダル誤爆）を防止
         reel.addEventListener('click', (e) => {
             if (hasDragged) {
                 e.stopPropagation();
@@ -292,7 +422,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, true);
 
-        // 初期状態の判定
-        updateActiveCard();
-    }
+        // 初期位置を中央セットの1枚目にセット
+        requestAnimationFrame(() => {
+            scrollToAllIndex(total, false);
+            handleReelUpdate();
+        });
+    }/*  */
 });

@@ -684,63 +684,74 @@ body {
 }
 
 /* =========================================================
-   作成物セクション：横回転リール（カルーセル）スタイル
+   作成物セクション：円柱無限リール＆詳細説明欄スタイル
    ========================================================= */
 .reel-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   margin-top: 20px;
+  perspective: 1200px;
+  /* 3Dの奥行きを設定 */
 }
 
 .works-reel {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 28px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  /* 左右の端のカードも画面中央に来られるように余白を確保 */
-  padding: 24px calc(50% - 170px);
+  padding: 28px calc(50% - 170px);
   scrollbar-width: none;
-  /* Firefox用スクロールバー非表示 */
   -ms-overflow-style: none;
-  /* IE/Edge用 */
   cursor: grab;
+  transform-style: preserve-3d;
 }
 
 .works-reel::-webkit-scrollbar {
   display: none;
-  /* Chrome/Safari用スクロールバー非表示 */
+}
+
+.works-reel.dragging,
+.works-reel.no-smooth {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
 }
 
 .works-reel.dragging {
-  scroll-snap-type: none;
-  scroll-behavior: auto;
   cursor: grabbing;
 }
 
-/* リール内のカードサイズと立体演出 */
+/* 円柱の側面のように少し奥に傾ける演出 */
 .works-reel .work-card {
   flex: 0 0 340px;
+  width: 340px;
   scroll-snap-align: center;
-  transform: scale(0.92);
-  opacity: 0.55;
+  transform: scale(0.88) rotateY(14deg);
+  opacity: 0.45;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.4s ease,
     box-shadow 0.4s ease,
     border-color 0.3s ease;
 }
 
-/* 中央にフォーカスされたカード（アクティブ状態） */
+/* 中央より右にあるカードは逆向きに傾ける */
+.works-reel .work-card.is-right {
+  transform: scale(0.88) rotateY(-14deg);
+}
+
+/* 中央にフォーカスされたカード（正面） */
 .works-reel .work-card.is-center {
-  transform: scale(1);
+  transform: scale(1) rotateY(0deg);
   opacity: 1;
   border-color: var(--accent-color);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .works-reel .work-card.is-center:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-6px) scale(1.02) rotateY(0deg);
 }
 
 /* 左右の送りボタン */
@@ -785,7 +796,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .reel-dot {
@@ -804,7 +815,63 @@ body {
   background-color: var(--accent-color);
 }
 
-/* スマホ幅でのカードサイズ調整 */
+/* =========================================================
+   表示中のアプリに対応する説明欄（下の詳細パネル）
+   ========================================================= */
+.reel-detail {
+  margin-top: 32px;
+  padding: 32px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.3s ease;
+}
+
+.reel-detail.updating {
+  opacity: 0.4;
+  transform: translateY(4px);
+}
+
+.reel-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.reel-detail-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.reel-detail-tech {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-color);
+  background-color: var(--accent-glow);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.reel-detail-desc {
+  font-size: 15px;
+  color: var(--sub-text-color);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.reel-detail-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 768px) {
   .works-reel {
     padding: 20px calc(50% - 140px);
@@ -813,6 +880,7 @@ body {
 
   .works-reel .work-card {
     flex: 0 0 280px;
+    width: 280px;
   }
 
   .reel-btn {
@@ -827,5 +895,9 @@ body {
 
   .reel-btn.next {
     right: 4px;
+  }
+
+  .reel-detail {
+    padding: 24px 20px;
   }
 }

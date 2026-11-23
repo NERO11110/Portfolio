@@ -252,19 +252,17 @@
         </div>
     </section>
 
-    <!-- 4. 作成物セクション（リール形式） -->
+    <!-- 4. 作成物セクション（円柱リール形式） -->
     <section class="section nav-section" id="works">
         <h2 class="section-title fade-in-item">作成物</h2>
-        
+
         <div class="reel-wrapper fade-in-item">
             <button class="reel-btn prev" id="reel-prev" aria-label="前の作品へ">‹</button>
-            
+
             <div class="works-reel" id="works-reel">
-                <div class="work-card modal-trigger" 
-                    data-title="的あてゲーム" 
-                    data-desc="PythonのPygameライブラリを使用して作成した、2Dの的あてゲームです。重力加速度を用いた斜方投射や当たり判定を実装しました。" 
-                    data-tech="Python"
-                    data-img="mato.png"
+                <div class="work-card modal-trigger" data-title="的あてゲーム"
+                    data-desc="PythonのPygameライブラリを使用して作成した、2Dの的あてゲームです。重力加速度を用いた斜方投射や当たり判定を実装しました。"
+                    data-tech="Python (Pygame)" data-img="mato.png"
                     data-site-url="https://colab.research.google.com/drive/17i-BSYAV5JbBrCCcUa2tiu9rCJS76pV0?usp=sharing"
                     data-github-url="https://github.com/NERO11110/mato-game">
                     <div class="work-image">
@@ -276,11 +274,9 @@
                     </div>
                 </div>
 
-                <div class="work-card modal-trigger" 
-                    data-title="スマートアグリ" 
-                    data-desc="スマート農業を推進するために開発したアプリケーションです。手軽に農業に携われることができます。" 
-                    data-tech="Python(streamlit) / HTML / CSS"
-                    data-img="agu.png"
+                <div class="work-card modal-trigger" data-title="スマートアグリ"
+                    data-desc="スマート農業を推進するために開発したアプリケーションです。手軽に農業に携われることができます。"
+                    data-tech="Python (Streamlit) / HTML / CSS" data-img="agu.png"
                     data-site-url="https://aguapp-viagvo8r77dmmbjxlwx8dc.streamlit.app/"
                     data-github-url="https://github.com/NERO11110/agu.app">
                     <div class="work-image">
@@ -292,11 +288,9 @@
                     </div>
                 </div>
 
-                <div class="work-card modal-trigger" 
-                    data-title="ポートフォリオサイト" 
-                    data-desc="自分自身の経歴やスキル、制作物をまとめたWebサイトです。レスポンシブデザインとアニメーションを取り入れました。" 
-                    data-tech="HTML / CSS / JavaScript"
-                    data-img="Por.png"
+                <div class="work-card modal-trigger" data-title="ポートフォリオサイト"
+                    data-desc="自分自身の経歴やスキル、制作物をまとめたWebサイトです。レスポンシブデザインとアニメーションを取り入れました。"
+                    data-tech="HTML / CSS / JavaScript" data-img="Por.png"
                     data-site-url="https://nero11110.github.io/Portfolio/"
                     data-github-url="https://github.com/NERO11110/Portfolio">
                     <div class="work-image">
@@ -313,8 +307,28 @@
         </div>
 
         <div class="reel-dots" id="reel-dots"></div>
+
+        <!-- 表示中のアプリに対応する詳細説明欄 -->
+        <div class="reel-detail fade-in-item" id="reel-detail">
+            <div class="reel-detail-header">
+                <h3 id="reel-detail-title">的あてゲーム</h3>
+                <span class="reel-detail-tech" id="reel-detail-tech">Python (Pygame)</span>
+            </div>
+            <p class="reel-detail-desc" id="reel-detail-desc">
+                PythonのPygameライブラリを使用して作成した、2Dの的あてゲームです。重力加速度を用いた斜方投射や当たり判定を実装しました。
+            </p>
+            <div class="reel-detail-actions">
+                <a id="reel-detail-site" class="modal-btn site-btn" href="#" target="_blank" rel="noopener noreferrer">
+                    Webサイトを開く ↗
+                </a>
+                <a id="reel-detail-github" class="modal-btn github-btn" href="#" target="_blank"
+                    rel="noopener noreferrer">
+                    GitHubコードを見る ↗
+                </a>
+            </div>
+        </div>
     </section>
-    
+
     <!-- モーダルウィンドウ構造 -->
     <div class="modal" id="modal">
         <div class="modal-overlay" id="modal-overlay"></div>
