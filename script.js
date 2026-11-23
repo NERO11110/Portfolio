@@ -427,5 +427,27 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollToAllIndex(total, false);
             handleReelUpdate();
         });
-    }/*  */
+    }/* 
+
+
+    // --- 8. 連絡先：メールアドレスのワンクリックコピー ---
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    const contactEmail = document.getElementById('contact-email');
+
+    if (copyEmailBtn && contactEmail) {
+        copyEmailBtn.addEventListener('click', async () => {
+            const emailText = contactEmail.textContent.trim();
+            try {
+                await navigator.clipboard.writeText(emailText);
+                copyEmailBtn.textContent = 'コピー完了！';
+                copyEmailBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyEmailBtn.textContent = 'コピー';
+                    copyEmailBtn.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('コピーに失敗しました:', err);
+            }
+        });
+    } 
 });

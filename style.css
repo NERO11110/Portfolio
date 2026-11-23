@@ -900,3 +900,100 @@ body {
     padding: 24px 20px;
   }
 }
+
+/* =========================================================
+   連絡先（Contact）セクションスタイル
+   ========================================================= */
+.contact-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-card:hover {
+  border-color: var(--accent-color);
+}
+
+.contact-lead {
+  font-size: 15px;
+  color: var(--sub-text-color);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.contact-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+.contact-mail-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+  word-break: break-all;
+  transition: color 0.25s ease;
+}
+
+.contact-value:hover {
+  color: var(--accent-color);
+}
+
+.copy-btn {
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-color);
+  background-color: var(--accent-glow);
+  border: 1px solid var(--accent-color);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.copy-btn:hover {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.copy-btn.copied {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .contact-card {
+    padding: 24px 20px;
+  }
+}
