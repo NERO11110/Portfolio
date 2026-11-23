@@ -829,7 +829,6 @@ body {
 }
 
 .reel-detail.updating {
-  opacity: 0.4;
   transform: translateY(4px);
 }
 
